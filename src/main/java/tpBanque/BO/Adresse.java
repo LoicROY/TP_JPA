@@ -2,9 +2,10 @@ package tpBanque.BO;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class Adresse {
+public class Adresse implements Serializable {
 
     @Column(name = "NUMERO", nullable = false)
     private int numero;

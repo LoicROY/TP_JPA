@@ -3,15 +3,14 @@ package tpBanque.BO;
 import tpBanque.ListService;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "COMPTE")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Compte {
+public class Compte implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

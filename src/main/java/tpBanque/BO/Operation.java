@@ -1,12 +1,13 @@
 package tpBanque.BO;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "OPERATION")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Operation {
+public class Operation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

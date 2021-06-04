@@ -1,11 +1,9 @@
-import tpBanque.BO.Adresse;
-import tpBanque.BO.Banque;
-import tpBanque.BO.Client;
-import tpBanque.BO.Compte;
+import tpBanque.BO.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 public class TestBanque {

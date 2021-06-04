@@ -1,13 +1,13 @@
 package tpBanque.BO;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "BANQUE")
-public class Banque {
+public class Banque implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
