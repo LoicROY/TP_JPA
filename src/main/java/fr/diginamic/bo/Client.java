@@ -20,7 +20,7 @@ public class Client implements Serializable {
     @Column( name = "PRENOM", length = 50)
     private String prenom;
 
-    @OneToMany( mappedBy = "client" )
+    @OneToMany( mappedBy = "client", cascade = CascadeType.PERSIST )
     private Set<Emprunt> emprunts;
 
 
@@ -67,7 +67,9 @@ public class Client implements Serializable {
     }
 
     public void addEmprunt(Emprunt emprunt){
-        this.emprunts.add(emprunt);
+        if (emprunt != null){
+            emprunt.setClient(this);
+        }
     }
 
     public void removeEmprunt(Emprunt emprunt){

@@ -2,7 +2,7 @@ package fr.diginamic.bo;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,15 +16,15 @@ public class Emprunt implements Serializable {
     private int id;
 
     @Column( name = "DATE_DEBUT" )
-    private Date dateDebut;
+    private LocalDate dateDebut;
 
     @Column( name = "DELAI" )
     private int delai;
 
     @Column( name = "DATE_FIN" )
-    private Date dateFin;
+    private LocalDate dateFin;
 
-    @ManyToOne( fetch = FetchType.LAZY )
+    @ManyToOne
     @JoinColumn( name = "ID_CLIENT" )
     private Client client;
 
@@ -36,7 +36,7 @@ public class Emprunt implements Serializable {
         this.livres = new HashSet();
     }
 
-    public Emprunt(Date dateDebut, int delai, Date dateFin) {
+    public Emprunt(LocalDate dateDebut, int delai, LocalDate dateFin) {
         this.dateDebut = dateDebut;
         this.delai = delai;
         this.dateFin = dateFin;
@@ -51,11 +51,11 @@ public class Emprunt implements Serializable {
         this.id = id;
     }
 
-    public Date getDateDebut() {
+    public LocalDate getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(LocalDate dateDebut) {
         this.dateDebut = dateDebut;
     }
 
@@ -67,11 +67,11 @@ public class Emprunt implements Serializable {
         this.delai = delai;
     }
 
-    public Date getDateFin() {
+    public LocalDate getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(LocalDate dateFin) {
         this.dateFin = dateFin;
     }
 
@@ -80,7 +80,14 @@ public class Emprunt implements Serializable {
     }
 
     public void setClient(Client client) {
+        if (this.client != null){
+            this.client.getEmprunts().remove(this);
+        }
         this.client = client;
+
+        if (client != null){
+            client.getEmprunts().add(this);
+        }
     }
 
     public Set<Livre> getLivres() {
