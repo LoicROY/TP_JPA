@@ -30,8 +30,7 @@ public class Operation implements Serializable {
     public Operation() {
     }
 
-    public Operation(long id, LocalDate date, double montant, String motif) {
-        this.id = id;
+    public Operation(LocalDate date, double montant, String motif) {
         this.date = date;
         this.montant = montant;
         this.motif = motif;

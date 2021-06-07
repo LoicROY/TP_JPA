@@ -17,7 +17,7 @@ public class Banque implements Serializable {
     @Column(name = "NOM", length = 50, nullable = false)
     private String nom;
 
-    @OneToMany(mappedBy = "banque" , cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "banque")
     private Set<Client> clients;
 
     {

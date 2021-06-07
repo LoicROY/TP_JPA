@@ -23,7 +23,7 @@ public class Compte implements Serializable {
     @Column(name = "SOLDE", nullable = false)
     private double solde;
 
-    @ManyToMany(mappedBy = "comptes")
+    @ManyToMany(mappedBy = "comptes", cascade = CascadeType.PERSIST)
     private Set<Client> clients;
 
     @OneToMany(mappedBy = "compte", cascade = CascadeType.PERSIST)
